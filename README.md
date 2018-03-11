@@ -6,8 +6,8 @@ TODO
 
 ### Set up Cassandra, where readings are stored
 ```bash
-# Start or pull a new Cassandra docker container
-docker run --name krumpiri-cassandra -d cassandra:3.11.2
+# Create a new named Cassandra docker container
+docker run --name krumpiri-cassandra -d -p 9042:9042 cassandra:3.11.2
 
 # Start a cql shell in another container
 docker run -it --link krumpiri-cassandra:cassandra --rm cassandra:3.11.2 sh -c 'exec cqlsh "$CASSANDRA_PORT_9042_TCP_ADDR"'
@@ -18,6 +18,7 @@ docker run -it --link krumpiri-cassandra:cassandra --rm cassandra:3.11.2 sh -c '
 create keyspace Krumpiri with replication = {'class': 'SimpleStrategy', 'replication_factor': 1};
 
 -- create tables
+use Krumpiri;
 CREATE TABLE readings (
   id UUID PRIMARY KEY,
   net_in_wh INT,
@@ -25,4 +26,12 @@ CREATE TABLE readings (
   signature TEXT,
   username TEXT
 );
+```
+
+```bash
+# When done, stop the container
+docker stop krumpiri-cassandra
+
+# Later you can start your named container with
+docker start krumpiri-cassandra
 ```
