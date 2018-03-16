@@ -1,15 +1,13 @@
 defmodule KrumpiriWeb.Application do
   use Application
 
-  # See https://hexdocs.pm/elixir/Application.html
-  # for more information on OTP Applications
   def start(_type, _args) do
     import Supervisor.Spec
 
     # Define workers and child supervisors to be supervised
     children = [
       # Start the endpoint when the application starts
-      supervisor(KrumpiriWebWeb.Endpoint, []),
+      supervisor(KrumpiriWeb.Endpoint, []),
       # Start your own worker by calling: KrumpiriWeb.Worker.start_link(arg1, arg2, arg3)
       # worker(KrumpiriWeb.Worker, [arg1, arg2, arg3]),
     ]
@@ -23,7 +21,7 @@ defmodule KrumpiriWeb.Application do
   # Tell Phoenix to update the endpoint configuration
   # whenever the application is updated.
   def config_change(changed, _new, removed) do
-    KrumpiriWebWeb.Endpoint.config_change(changed, removed)
+    KrumpiriWeb.Endpoint.config_change(changed, removed)
     :ok
   end
 end

@@ -1,7 +1,7 @@
-defmodule KrumpiriWebWeb.Endpoint do
+defmodule KrumpiriWeb.Endpoint do
   use Phoenix.Endpoint, otp_app: :krumpiri_web
 
-  socket "/socket", KrumpiriWebWeb.UserSocket
+  socket "/socket", KrumpiriWeb.UserSocket
 
   # Serve at "/" the static files from "priv/static" directory.
   #
@@ -36,9 +36,9 @@ defmodule KrumpiriWebWeb.Endpoint do
   plug Plug.Session,
     store: :cookie,
     key: "_krumpiri_web_key",
-    signing_salt: "EUaNbfuH"
+    signing_salt: "ITXI7dT/"
 
-  plug KrumpiriWebWeb.Router
+  plug KrumpiriWeb.Router
 
   @doc """
   Callback invoked for dynamically configuring the endpoint.

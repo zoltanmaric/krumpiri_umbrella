@@ -1,5 +1,5 @@
-defmodule KrumpiriWebWeb.Router do
-  use KrumpiriWebWeb, :router
+defmodule KrumpiriWeb.Router do
+  use KrumpiriWeb, :router
 
   pipeline :browser do
     plug :accepts, ["html"]
@@ -13,14 +13,14 @@ defmodule KrumpiriWebWeb.Router do
     plug :accepts, ["json"]
   end
 
-  scope "/", KrumpiriWebWeb do
+  scope "/", KrumpiriWeb do
     pipe_through :browser # Use the default browser stack
 
     get "/", PageController, :index
   end
 
   # Other scopes may use custom stacks.
-  # scope "/api", KrumpiriWebWeb do
+  # scope "/api", KrumpiriWeb do
   #   pipe_through :api
   # end
 end

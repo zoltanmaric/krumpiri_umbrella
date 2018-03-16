@@ -1,5 +1,5 @@
-defmodule KrumpiriWebWeb.ErrorView do
-  use KrumpiriWebWeb, :view
+defmodule KrumpiriWeb.ErrorView do
+  use KrumpiriWeb, :view
 
   def render("404.html", _assigns) do
     "Page not found"

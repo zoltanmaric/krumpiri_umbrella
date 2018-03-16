@@ -1,8 +1,8 @@
-defmodule KrumpiriWebWeb.UserSocket do
+defmodule KrumpiriWeb.UserSocket do
   use Phoenix.Socket
 
   ## Channels
-  # channel "room:*", KrumpiriWebWeb.RoomChannel
+  # channel "room:*", KrumpiriWeb.RoomChannel
 
   ## Transports
   transport :websocket, Phoenix.Transports.WebSocket
@@ -30,7 +30,7 @@ defmodule KrumpiriWebWeb.UserSocket do
   # Would allow you to broadcast a "disconnect" event and terminate
   # all active sockets and channels for a given user:
   #
-  #     KrumpiriWebWeb.Endpoint.broadcast("user_socket:#{user.id}", "disconnect", %{})
+  #     KrumpiriWeb.Endpoint.broadcast("user_socket:#{user.id}", "disconnect", %{})
   #
   # Returning `nil` makes this socket anonymous.
   def id(_socket), do: nil

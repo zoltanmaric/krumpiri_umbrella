@@ -1,4 +1,4 @@
-defmodule KrumpiriWebWeb.ChannelCase do
+defmodule KrumpiriWeb.ChannelCase do
   @moduledoc """
   This module defines the test case to be used by
   channel tests.
@@ -21,12 +21,16 @@ defmodule KrumpiriWebWeb.ChannelCase do
       use Phoenix.ChannelTest
 
       # The default endpoint for testing
-      @endpoint KrumpiriWebWeb.Endpoint
+      @endpoint KrumpiriWeb.Endpoint
     end
   end
 
 
-  setup _tags do
+  setup tags do
+    :ok = Ecto.Adapters.SQL.Sandbox.checkout(Krumpiri.Repo)
+    unless tags[:async] do
+      Ecto.Adapters.SQL.Sandbox.mode(Krumpiri.Repo, {:shared, self()})
+    end
     :ok
   end
 

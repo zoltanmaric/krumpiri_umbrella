@@ -1,5 +1,5 @@
-defmodule KrumpiriWebWeb.PageControllerTest do
-  use KrumpiriWebWeb.ConnCase
+defmodule KrumpiriWeb.PageControllerTest do
+  use KrumpiriWeb.ConnCase
 
   test "GET /", %{conn: conn} do
     conn = get conn, "/"

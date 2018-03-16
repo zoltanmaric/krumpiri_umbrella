@@ -6,7 +6,7 @@ use Mix.Config
 # The watchers configuration can be used to run external
 # watchers to your application. For example, we use it
 # with brunch.io to recompile .js and .css sources.
-config :krumpiri_web, KrumpiriWebWeb.Endpoint,
+config :krumpiri_web, KrumpiriWeb.Endpoint,
   http: [port: 4000],
   debug_errors: true,
   code_reloader: true,
@@ -31,19 +31,14 @@ config :krumpiri_web, KrumpiriWebWeb.Endpoint,
 # different ports.
 
 # Watch static and templates for browser reloading.
-config :krumpiri_web, KrumpiriWebWeb.Endpoint,
+config :krumpiri_web, KrumpiriWeb.Endpoint,
   live_reload: [
     patterns: [
       ~r{priv/static/.*(js|css|png|jpeg|jpg|gif|svg)$},
       ~r{priv/gettext/.*(po)$},
-      ~r{lib/krumpiri_web_web/views/.*(ex)$},
-      ~r{lib/krumpiri_web_web/templates/.*(eex)$}
+      ~r{lib/krumpiri_web/views/.*(ex)$},
+      ~r{lib/krumpiri_web/templates/.*(eex)$}
     ]
   ]
 
-# Do not include metadata nor timestamps in development logs
-config :logger, :console, format: "[$level] $message\n"
 
-# Set a higher stacktrace during development. Avoid configuring such
-# in production as building large stacktraces may be expensive.
-config :phoenix, :stacktrace_depth, 20

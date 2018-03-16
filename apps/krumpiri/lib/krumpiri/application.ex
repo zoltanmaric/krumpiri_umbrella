@@ -1,20 +1,19 @@
 defmodule Krumpiri.Application do
-  # See https://hexdocs.pm/elixir/Application.html
-  # for more information on OTP Applications
-  @moduledoc false
+  @moduledoc """
+  The Krumpiri Application Service.
 
+  The krumpiri system business domain lives in this application.
+
+  Exposes API to clients such as the `KrumpiriWeb` application
+  for use in channels, controllers, and elsewhere.
+  """
   use Application
 
   def start(_type, _args) do
-    # List all child processes to be supervised
-    children = [
-      # Starts a worker by calling: Krumpiri.Worker.start_link(arg)
-      # {Krumpiri.Worker, arg},
-    ]
+    import Supervisor.Spec, warn: false
 
-    # See https://hexdocs.pm/elixir/Supervisor.html
-    # for other strategies and supported options
-    opts = [strategy: :one_for_one, name: Krumpiri.Supervisor]
-    Supervisor.start_link(children, opts)
+    Supervisor.start_link([
+      supervisor(Krumpiri.Repo, []),
+    ], strategy: :one_for_one, name: Krumpiri.Supervisor)
   end
 end

@@ -1,11 +1,11 @@
-defmodule KrumpiriWebWeb.Gettext do
+defmodule KrumpiriWeb.Gettext do
   @moduledoc """
   A module providing Internationalization with a gettext-based API.
 
   By using [Gettext](https://hexdocs.pm/gettext),
   your module gains a set of macros for translations, for example:
 
-      import KrumpiriWebWeb.Gettext
+      import KrumpiriWeb.Gettext
 
       # Simple translation
       gettext "Here is the string to translate"

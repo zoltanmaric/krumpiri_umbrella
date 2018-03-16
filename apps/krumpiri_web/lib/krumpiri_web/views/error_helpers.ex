@@ -1,4 +1,4 @@
-defmodule KrumpiriWebWeb.ErrorHelpers do
+defmodule KrumpiriWeb.ErrorHelpers do
   @moduledoc """
   Conveniences for translating and building error messages.
   """
@@ -32,9 +32,9 @@ defmodule KrumpiriWebWeb.ErrorHelpers do
     #     dgettext "errors", "is invalid"
     #
     if count = opts[:count] do
-      Gettext.dngettext(KrumpiriWebWeb.Gettext, "errors", msg, msg, count, opts)
+      Gettext.dngettext(KrumpiriWeb.Gettext, "errors", msg, msg, count, opts)
     else
-      Gettext.dgettext(KrumpiriWebWeb.Gettext, "errors", msg, opts)
+      Gettext.dgettext(KrumpiriWeb.Gettext, "errors", msg, opts)
     end
   end
 end
