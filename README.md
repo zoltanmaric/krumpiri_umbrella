@@ -2,7 +2,16 @@
 
 ## Installation
 ### Set up PostgreSQL, the DB containing user info
-TODO
+```bash
+# Create a new named Postgres docker container, listening on port 5433,
+# because you may have a local postgres running and listening on the standard port 5432:
+docker run --name krumpiri-postgres -e POSTGRES_DB=krumpiri_dev -d -p 5433:5432 postgres
+
+# Start a psql shell in another container
+docker run -it --rm --link krumpiri-postgres:postgres postgres psql -h postgres -U postgres
+
+
+```
 
 ### Set up Cassandra, where readings are stored
 ```bash
@@ -29,9 +38,21 @@ CREATE TABLE readings (
 ```
 
 ```bash
-# When done, stop the container
+# When done, stop the containers
+docker stop krumpiri-postgres
 docker stop krumpiri-cassandra
 
 # Later you can start your named container with
+docker start krumpiri-postgres
 docker start krumpiri-cassandra
 ```
+
+## Usage
+
+Start the server
+```bash
+cd apps/krumpiri_web
+mix phx.server
+```
+
+Open [http://0.0.0.0:4000]()

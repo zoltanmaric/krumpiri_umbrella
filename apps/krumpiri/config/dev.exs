@@ -4,7 +4,7 @@ use Mix.Config
 config :krumpiri, Krumpiri.Repo,
   adapter: Ecto.Adapters.Postgres,
   username: "postgres",
-  password: "postgres",
   database: "krumpiri_dev",
   hostname: "localhost",
+  port: 5433,
   pool_size: 10
