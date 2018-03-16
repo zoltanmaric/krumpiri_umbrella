@@ -19,8 +19,9 @@ defmodule KrumpiriWeb.Router do
     get "/", PageController, :index
   end
 
-  # Other scopes may use custom stacks.
-  # scope "/api", KrumpiriWeb do
-  #   pipe_through :api
-  # end
+   scope "/api", KrumpiriWeb do
+     pipe_through :api
+
+     post "/submit", ReadingsController, :submit
+   end
 end
