@@ -6,8 +6,6 @@ defmodule Krumpiri.ReadingQueries do
     {:ok, %Xandra.Void{}} = Xandra.execute(conn, statement, _params = [])
   end
 
-#{"net_in_wh": 12, "read_time": "2018-03-16 12:00:00", "signature": "potpis", "username": "zokica"}
-
   def insert(reading) do
     {:ok, conn} = Xandra.start_link(after_connect: &Xandra.execute(&1, "USE Krumpiri"))
 
