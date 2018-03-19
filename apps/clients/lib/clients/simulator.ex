@@ -5,7 +5,8 @@ defmodule Clients.Simulator do
 
   def report_readings(num_clients, interval_ms, num_readings) do
     1..num_clients
-    |> Enum.map(&generate_and_report(&1, interval_ms, num_readings))
+    |> Task.async_stream(&generate_and_report(&1, interval_ms, num_readings), timeout: 3600000, max_concurrency: num_clients)
+    |> Stream.run
   end
 
   defp generate_and_report(user_index, interval_ms, num_readings) do
